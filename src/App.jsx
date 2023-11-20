@@ -1,6 +1,7 @@
 import Resume from "./components/Resume";
 import Button from "./components/Button";
 import Sidebar from "./components/Sidebar";
+import "remixicon/fonts/remixicon.css";
 import { useState } from "react";
 
 export default function App() {
@@ -30,11 +31,13 @@ export default function App() {
               className={"content active"}
               onClick={(e) => toggleNav(e)}
               label={"Content"}
+              icon={<i className="ri-stack-fill"></i>}
             />
             <Button
               className={"theme"}
               onClick={(e) => toggleNav(e)}
               label={"Theme"}
+              icon={<i className="ri-palette-fill"></i>}
             />
           </nav>
         </header>
@@ -42,8 +45,16 @@ export default function App() {
         <Sidebar className={sidebarClass} />
 
         <footer>
-          <Button className={"clear"} label={"Clear Resume"} />
-          <Button className={"example"} label={"Load Sample"} />
+          <Button
+            className={"clear"}
+            label={"Clear Resume"}
+            icon={<i className="ri-eraser-fill"></i>}
+          />
+          <Button
+            className={"example"}
+            label={"Load Sample"}
+            icon={<i className="ri-profile-fill"></i>}
+          />
         </footer>
       </div>
 

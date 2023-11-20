@@ -10,6 +10,6 @@ export default function Sidebar({ className }) {
       </>
     );
   } else {
-    return <div>theme settings goes here</div>;
+    return <i>theme settings goes here</i>;
   }
 }
