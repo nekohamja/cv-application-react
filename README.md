@@ -1,2 +1,2 @@
 # cv-application-react
-CV application created using vite and react.
+CV application created using React (built with Vite and Vercel).
