@@ -8,17 +8,26 @@ export function PersonalDetails() {
         <i className="ri-account-box-fill"></i>
         Personal Details
       </h3>
-      <label htmlFor="name">Full Name</label>
-      <input type="text" id="name" placeholder="Bogart" />
 
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" placeholder="Bogart@email.com" />
+      <label htmlFor="name">
+        <span>Full Name</span>
+        <input type="text" id="name" required />
+      </label>
 
-      <label htmlFor="phone">Phone</label>
-      <input type="tel" id="phone" placeholder="+63 912 4567 890" />
+      <label htmlFor="email">
+        <span>Email</span>
+        <input type="text" id="email" required />
+      </label>
 
-      <label htmlFor="address">Address</label>
-      <input type="text" id="address" placeholder="Tokyo, Japan" />
+      <label htmlFor="phone">
+        <span>Phone</span>
+        <input type="tel" id="phone" required />
+      </label>
+
+      <label htmlFor="address">
+        <span>Address</span>
+        <input type="text" id="address" required />
+      </label>
     </form>
   );
 }
@@ -46,17 +55,30 @@ export function Education() {
       </div>
 
       <div className={inputList}>
-        <label htmlFor="school">School</label>
-        <input type="text" id="school" placeholder="School" />
+        <label htmlFor="school">
+          <span>School</span>
+          <input type="text" id="school" required />
+        </label>
 
-        <label htmlFor="start-date">Start Date</label>
-        <input type="date" id="start-date" />
+        <label htmlFor="start-date">
+          <span>Start Date</span>
+          <input
+            type="date"
+            id="start-date"
+            placeholder="Start Date"
+            required
+          />
+        </label>
 
-        <label htmlFor="end-date">End Date</label>
-        <input type="date" id="end-date" />
+        <label htmlFor="end-date">
+          <span>End Date</span>
+          <input type="date" id="end-date" placeholder="End Date" required />
+        </label>
 
-        <label htmlFor="location">Location</label>
-        <input type="text" id="location" placeholder="Location" />
+        <label htmlFor="location">
+          <span>Location</span>
+          <input type="text" id="location" required />
+        </label>
       </div>
     </form>
   );
@@ -77,27 +99,45 @@ export function Experience() {
       </div>
 
       <div className="input-list">
-        <label htmlFor="company-name">Company Name</label>
-        <input type="text" id="company-name" placeholder="Company Name" />
+        <label htmlFor="company-name">
+          <span>Company Name</span>
+          <input type="text" id="company-name" required />
+        </label>
 
-        <label htmlFor="position">Position</label>
-        <input type="text" id="position" placeholder="Position" />
+        <label htmlFor="position">
+          <span>Position</span>
+          <input type="text" id="position" required />
+        </label>
 
-        <label htmlFor="start-date">Start Date</label>
-        <input type="date" id="start-date" />
+        <label htmlFor="start-date">
+          <span>Start Date</span>
+          <input
+            type="date"
+            id="start-date"
+            placeholder="Start Date"
+            required
+          />
+        </label>
 
-        <label htmlFor="end-date">End Date</label>
-        <input type="date" id="end-date" />
+        <label htmlFor="end-date">
+          <span>End Date</span>
+          <input type="date" id="end-date" placeholder="End Date" required />
+        </label>
 
-        <label htmlFor="location">Location</label>
-        <input type="text" id="location" placeholder="Location" />
+        <label htmlFor="location">
+          <span>Location</span>
+          <input type="text" id="location" required />
+        </label>
 
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          rows="4"
-          placeholder="Description"
-        ></textarea>
+        <label htmlFor="description">
+          <span>Description</span>
+          <textarea
+            id="description"
+            rows="4"
+            placeholder="Description"
+            required
+          ></textarea>
+        </label>
       </div>
     </form>
   );

@@ -9,8 +9,6 @@
   --secondary: #efefef;
   --accent: #4d5eff;
 
-  color-scheme: light dark;
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,13 +53,12 @@ form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.2rem;
+  gap: 1rem;
 
   .form-header {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     justify-content: space-between;
     > h3 {
       flex: 1;
@@ -73,6 +70,7 @@ form {
     width: 100%;
     align-items: flex-start;
     flex-direction: column;
+    gap: 1rem;
 
     &.active {
       display: flex;
@@ -81,27 +79,68 @@ form {
 }
 
 label {
-  transform: translate(10px, 10px);
-  background: white;
-  padding: 2px 10px;
+  color: #241d1d83;
+  width: 100%;
   border-radius: 6px;
+  position: relative;
+
+  & span {
+    position: absolute;
+    display: inline-block;
+    cursor: text;
+    top: 16px;
+    left: 16px;
+    transition: transform 200ms ease-out, font-size 200ms ease-out;
+  }
+
+  &:has(input:focus),
+  &:has(input:valid) {
+    & span {
+      transform: translate(0px, -8px);
+      font-size: 0.75em;
+    }
+  }
+
+  &:has(input[type="date"]) {
+    & span {
+      display: none;
+    }
+  }
 }
 
 input,
 textarea {
   width: 100%;
   padding: 1rem;
-  border-radius: 8px;
+  padding-top: 1.3rem;
+  padding-bottom: 0.8rem;
+  border-radius: 12px;
   border: none;
+  resize: none;
   font-family: inherit;
   background: var(--secondary);
   outline-offset: -1px;
   outline: 1px solid transparent;
-  resize: none;
   transition: outline 260ms ease-out;
 
   &:focus {
     outline: 1px solid rgba(0, 0, 0, 0.212);
+    &[type="date"]::before {
+      position: absolute;
+      transform: translateY(-20px);
+      font-size: 0.75em;
+      margin-right: 0;
+    }
+  }
+
+  &[type="date"]::before {
+    content: attr(placeholder);
+    color: #241d1d83;
+    font-size: 14px;
+    font-family: var(--default-font);
+    margin-right: 2em;
+    transform: translateY(-2px);
+    transition: transform 200ms ease-out, font-size 200ms ease-out;
   }
 }
 
