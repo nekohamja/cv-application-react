@@ -30,6 +30,7 @@ body {
   justify-content: center;
   overflow-y: scroll;
   font-size: 14px;
+  color: var(--text);
 }
 
 span {
@@ -38,6 +39,11 @@ span {
 
 h1 {
   font-size: 1.3em;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 300;
 }
 
 h3 {
@@ -94,16 +100,12 @@ label {
   }
 
   &:has(input:focus),
-  &:has(input:valid) {
+  &:has(input:valid),
+  &:has(textarea:focus),
+  &:has(textarea:valid) {
     & span {
       transform: translate(0px, -8px);
       font-size: 0.75em;
-    }
-  }
-
-  &:has(input[type="date"]) {
-    & span {
-      display: none;
     }
   }
 }
@@ -125,22 +127,6 @@ textarea {
 
   &:focus {
     outline: 1px solid rgba(0, 0, 0, 0.212);
-    &[type="date"]::before {
-      position: absolute;
-      transform: translateY(-20px);
-      font-size: 0.75em;
-      margin-right: 0;
-    }
-  }
-
-  &[type="date"]::before {
-    content: attr(placeholder);
-    color: #241d1d83;
-    font-size: 14px;
-    font-family: var(--default-font);
-    margin-right: 2em;
-    transform: translateY(-2px);
-    transition: transform 200ms ease-out, font-size 200ms ease-out;
   }
 }
 
@@ -232,9 +218,9 @@ header {
     position: absolute;
     content: "";
     width: 100%;
-    height: 3rem;
+    height: 10rem;
     z-index: -1;
-    transform: translateY(-45px);
+    transform: translateY(-120px);
     background-color: white;
   }
 
@@ -285,11 +271,21 @@ footer {
     flex-direction: column;
     width: 100%;
     gap: 1rem;
+
+    @media (width>=578px) {
+      .show-resume {
+        display: none;
+      }
+    }
   }
 
+  /* a4 size = 8.3in x 11.7in : 595px x 842px : 1/1.41*/
   .resume {
-    /* a4 size = 8.3in x 11.7in : 595px x 842px : 1/1.41*/
     position: sticky;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     top: 2rem;
     width: 100%;
     height: clamp(421px, 70vw, 842px);
@@ -298,8 +294,61 @@ footer {
     z-index: 10;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 8px;
+    > hr {
+      width: 20%;
+      opacity: 0.3;
+    }
+
+    &.active {
+      display: flex;
+    }
+
+    .resume-contact {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 3rem;
+      gap: 1rem;
+      background: var(--text);
+      color: white;
+
+      > h1,
+      h2 {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .resume-description {
+      padding: 0 2rem;
+    }
+
+    .resume-education,
+    .resume-experience {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      padding: 0 2rem;
+      > h1 {
+        width: 100%;
+      }
+      .block {
+        display: flex;
+        gap: 1rem;
+      }
+    }
 
     @media (width<=578px) {
+      & {
+        gap: 1em;
+        font-size: 0.5em;
+        .resume-contact {
+          padding: 3em;
+          gap: 0.8em;
+        }
+      }
       &::after {
         position: absolute;
         left: 0;

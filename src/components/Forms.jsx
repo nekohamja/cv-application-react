@@ -1,7 +1,19 @@
 import Button from "./Button";
-import { useState } from "react";
 
-export function PersonalDetails() {
+export function PersonalDetails({
+  name,
+  headline,
+  email,
+  phone,
+  address,
+  description,
+  setName,
+  setHeadline,
+  setEmail,
+  setPhone,
+  setAddress,
+  setDescription,
+}) {
   return (
     <form className="form-personal-details">
       <h3>
@@ -11,35 +23,87 @@ export function PersonalDetails() {
 
       <label htmlFor="name">
         <span>Full Name</span>
-        <input type="text" id="name" required />
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          id="name"
+          required
+        />
+      </label>
+
+      <label htmlFor="headline">
+        <span>Headline</span>
+        <input
+          value={headline}
+          onChange={(e) => setHeadline(e.target.value)}
+          type="text"
+          id="headline"
+          required
+        />
       </label>
 
       <label htmlFor="email">
         <span>Email</span>
-        <input type="text" id="email" required />
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          id="email"
+          required
+        />
       </label>
 
       <label htmlFor="phone">
         <span>Phone</span>
-        <input type="tel" id="phone" required />
+        <input
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          type="tel"
+          id="phone"
+          required
+        />
       </label>
 
       <label htmlFor="address">
         <span>Address</span>
-        <input type="text" id="address" required />
+        <input
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          type="text"
+          id="address"
+          required
+        />
+      </label>
+
+      <label htmlFor="description">
+        <span>Description</span>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          id="description"
+          rows="4"
+          required
+        ></textarea>
       </label>
     </form>
   );
 }
 
-export function Education() {
-  const [inputList, setInputList] = useState("input-list");
-
-  function toggleInputList(e) {
-    e.preventDefault();
-    setInputList("input-list active");
-  }
-
+export function Education({
+  school,
+  degree,
+  schoolStart,
+  schoolEnd,
+  schoolLocation,
+  setSchool,
+  setDegree,
+  setSchoolStart,
+  setSchoolEnd,
+  setSchoolLocation,
+  isActive,
+  onClick,
+}) {
   return (
     <form className="form-education">
       <div className="form-header">
@@ -50,41 +114,84 @@ export function Education() {
         <Button
           className={"small add"}
           icon={<i className="ri-add-fill"></i>}
-          onClick={(e) => toggleInputList(e)}
+          onClick={onClick}
         />
       </div>
 
-      <div className={inputList}>
+      <div className={"input-list " + (isActive && "active")}>
         <label htmlFor="school">
           <span>School</span>
-          <input type="text" id="school" required />
+          <input
+            value={school}
+            onChange={(e) => setSchool(e.target.value)}
+            type="text"
+            id="school"
+            required
+          />
+        </label>
+
+        <label htmlFor="degree">
+          <span>Degree</span>
+          <input
+            value={degree}
+            onChange={(e) => setDegree(e.target.value)}
+            type="text"
+            id="degree"
+            required
+          />
         </label>
 
         <label htmlFor="start-date">
           <span>Start Date</span>
           <input
-            type="date"
+            value={schoolStart}
+            onChange={(e) => setSchoolStart(e.target.value)}
+            type="text"
             id="start-date"
-            placeholder="Start Date"
             required
           />
         </label>
 
         <label htmlFor="end-date">
           <span>End Date</span>
-          <input type="date" id="end-date" placeholder="End Date" required />
+          <input
+            value={schoolEnd}
+            onChange={(e) => setSchoolEnd(e.target.value)}
+            type="text"
+            id="end-date"
+            required
+          />
         </label>
 
         <label htmlFor="location">
           <span>Location</span>
-          <input type="text" id="location" required />
+          <input
+            value={schoolLocation}
+            onChange={(e) => setSchoolLocation(e.target.value)}
+            type="text"
+            id="location"
+            required
+          />
         </label>
       </div>
     </form>
   );
 }
 
-export function Experience() {
+export function Experience({
+  company,
+  position,
+  companyStart,
+  companyEnd,
+  companyLocation,
+  setCompany,
+  setPosition,
+  setCompanyStart,
+  setCompanyEnd,
+  setCompanyLocation,
+  isActive,
+  onClick,
+}) {
   return (
     <form className="form-experience">
       <div className="form-header">
@@ -95,48 +202,64 @@ export function Experience() {
         <Button
           className={"small add"}
           icon={<i className="ri-add-fill"></i>}
+          onClick={onClick}
         />
       </div>
 
-      <div className="input-list">
-        <label htmlFor="company-name">
+      <div className={"input-list " + (isActive && "active")}>
+        <label htmlFor="company">
           <span>Company Name</span>
-          <input type="text" id="company-name" required />
+          <input
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            type="text"
+            id="company"
+            required
+          />
         </label>
 
         <label htmlFor="position">
           <span>Position</span>
-          <input type="text" id="position" required />
+          <input
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+            type="text"
+            id="position"
+            required
+          />
         </label>
 
         <label htmlFor="start-date">
           <span>Start Date</span>
           <input
-            type="date"
+            value={companyStart}
+            onChange={(e) => setCompanyStart(e.target.value)}
+            type="text"
             id="start-date"
-            placeholder="Start Date"
             required
           />
         </label>
 
         <label htmlFor="end-date">
           <span>End Date</span>
-          <input type="date" id="end-date" placeholder="End Date" required />
+          <input
+            value={companyEnd}
+            onChange={(e) => setCompanyEnd(e.target.value)}
+            type="text"
+            id="end-date"
+            required
+          />
         </label>
 
         <label htmlFor="location">
           <span>Location</span>
-          <input type="text" id="location" required />
-        </label>
-
-        <label htmlFor="description">
-          <span>Description</span>
-          <textarea
-            id="description"
-            rows="4"
-            placeholder="Description"
+          <input
+            value={companyLocation}
+            onChange={(e) => setCompanyLocation(e.target.value)}
+            type="text"
+            id="location"
             required
-          ></textarea>
+          />
         </label>
       </div>
     </form>
